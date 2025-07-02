@@ -1,0 +1,151 @@
+{
+  "name": "Umair Khan Durrani",
+  "contact": {
+    "location": "Lahore, Pakistan",
+    "phone": "+92 311 2211356",
+    "email": "ukhan2147@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/umair21/",
+    "portfolio": "https://www.behance.net/gallery/225161295/Power-BI-Dashboards"
+  },
+  "profiles": [
+    "https://www.upwork.com/freelancers/~01d1716428458e9e91?p=1831672376928919552",
+    "https://www.behance.net/gallery/225349839/Certificate-of-Completion",
+    "https://coursera.org/share/3fbc34f6b30a321f7045c873531bf0fd"
+  ],
+  "headline": [
+    "Business Intelligence Analyst | Data Visualization | Power BI Developer",
+    "Business Developer | Client Acquisition Strategist | Growth Engineer",
+    "HR & Admin Operations | Public Sector Coordination"
+  ],
+  "summary": "Data-driven professional skilled in Power BI, SQL, Excel, and data modeling, with proven experience in business analysis, client acquisition, CRM management, and public sector documentation. Adept at building dashboards, automating analytics workflows, and aligning tech capabilities with business goals. Known for cross-functional collaboration, process optimization, and producing actionable insights for decision-making.",
+  "tech_stack": [
+    "Power BI", "DAX", "SQL", "Excel", "Data Modelling", "ETL", "CRM Systems", "Agile", "Google Sheets", "Research Analytics",
+    "MERN", "MEAN", "Mailchimp", "Lemlist", "Apollo.io", "Snov.io", "Trello", "Canva", "MS Office"
+  ],
+  "core_competencies": [
+    "Data Analytics & Visualization",
+    "Lead Generation (Upwork, LinkedIn, Apollo.io, Snov.io)",
+    "Proposal Writing & Bid Management",
+    "CRM & KPI Reporting",
+    "Negotiation & Client Acquisition",
+    "HR Coordination & Documentation",
+    "Office & Records Management",
+    "Public Sector Outreach"
+  ],
+  "experience": [
+    {
+      "title": "Sales BI Analyst / Growth Engineer",
+      "company": "FleekBiz Pvt Ltd",
+      "location": "Lahore, Pakistan",
+      "dates": "Jan 2025 – Feb 2025",
+      "description": [
+        "Engineered dynamic Power BI dashboards for sales pipeline visibility, executive insights, and bidding optimization.",
+        "Built reusable data models from CRM exports, reducing report turnaround time.",
+        "Delivered weekly insights to sales and marketing teams to inform strategy and resource allocation.",
+        "Achieved initial revenue target and managed full-cycle bidding on Upwork."
+      ]
+    },
+    {
+      "title": "Sales Intelligence Specialist / Business Developer",
+      "company": "PixelPK",
+      "location": "Lahore, Pakistan",
+      "dates": "Jul 2022 – Nov 2024",
+      "description": [
+        "Generated 360+ warm leads in 6 months across Upwork, LinkedIn, Fiverr, and Freelancer.",
+        "Automated lead scoring system using Power BI to identify high-conversion opportunities.",
+        "Designed real-time dashboards tracking outreach performance and competitor benchmarks.",
+        "Created Power BI dashboards for lead tracking and competitor monitoring.",
+        "Managed web/app project delivery and created cost/time breakdowns."
+      ]
+    },
+    {
+      "title": "Business Analyst / Business Developer",
+      "company": "Cutting Edge Projects UK (Green Origins)",
+      "location": "Lahore, Pakistan",
+      "dates": "May 2023 – Sep 2023",
+      "description": [
+        "Conducted exploratory data analysis and visualized sales and competitor data for UK market entry.",
+        "Integrated CRM and third-party research sources into centralized analytics reporting.",
+        "Spearheaded delivery of software products including trucking systems and lender apps.",
+        "Built and managed CRM databases to boost lead tracking and conversions."
+      ]
+    },
+    {
+      "title": "Assistant Director (Coordination & Documentation)",
+      "company": "PixelPK",
+      "location": "Lahore, Pakistan",
+      "dates": "Jul 2022 – Nov 2024",
+      "description": [
+        "Drafted summaries, memos, and internal case files to expedite administrative decisions.",
+        "Maintained HRIS and digitized employee/project records to reduce redundancies.",
+        "Coordinated department calendars, procurement, and inter-department updates.",
+        "Facilitated recruitment lifecycle and maintained compliance with government proposal deadlines."
+      ]
+    },
+    {
+      "title": "Digital Marketing Assistant / Executive",
+      "company": "Vision Hawk / Adverchitects Technologies",
+      "location": "Lahore, Pakistan",
+      "dates": "Sep 2020 – Nov 2021",
+      "description": [
+        "Analyzed social media engagement and guided content strategy across multiple channels.",
+        "Produced weekly engagement reports to inform campaign adjustments.",
+        "Handled outreach and operational communication for public health awareness projects.",
+        "Managed digital customer support and maintained fast response standards."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Real-Time Real Estate Dashboard",
+      "description": "Built an end-to-end BI solution visualizing agent KPIs, deal conversion rates, and regional performance using slicers, calculated columns, and dynamic DAX measures."
+    },
+    {
+      "name": "HR Analytics Dashboard",
+      "description": "Designed an interactive workforce dashboard covering demographics, attrition, and satisfaction trends. Enabled HR to identify flight risk segments and policy gaps."
+    },
+    {
+      "name": "Netflix Streaming Analysis",
+      "description": "Analyzed 78K+ streaming titles with Power Query and DAX. Created genre trend visuals, popularity heatmaps, and language segmentation for viewer insights."
+    },
+    {
+      "name": "Divorce Trends Visualization",
+      "description": "Built a longitudinal dashboard visualizing 18 years of divorce data by state, age, education, and income. Used bookmarks and tooltips for user-friendly navigation."
+    },
+    {
+      "name": "Compensation & Retention Study",
+      "description": "Led a cross-sectional study correlating pay practices with employee loyalty. Produced executive slides backed by survey data and pivot-based analytics."
+    },
+    {
+      "name": "E-Commerce Sales Tracker",
+      "description": "Developed a dynamic dashboard monitoring product sales, category performance, and conversion funnels. Applied row-level security and dynamic filtering."
+    },
+    {
+      "name": "Call Center Performance Insights",
+      "description": "Built visual reports analyzing agent efficiency, customer wait times, and resolution rates using slicers and KPI cards. Enabled call center leads to improve SLA adherence."
+    },
+    {
+      "name": "Healthcare Utilization Dashboard",
+      "description": "Analyzed hospital admission data by specialty, patient demographics, and region. Created drill-through views for treatment trends and resource planning."
+    }
+  ],
+  "certifications": [
+    "Business Intelligence Course – AI Data Yard (2025)",
+    "Data Modelling in Power BI – Microsoft (2024)",
+    "Intermediate SQL – DataCamp + EMBA 506 (2024)",
+    "Data Literacy Foundations – Maven Analytics (2024)"
+  ],
+  "education": [
+    {
+      "degree": "MBA – Human Resource Management",
+      "institution": "University of the Punjab",
+      "dates": "Expected Jul 2025"
+    },
+    {
+      "degree": "BS – Management Sciences (Marketing)",
+      "institution": "University of the Punjab",
+      "dates": "2018–2022",
+      "cgpa": "3.1"
+    }
+  ]
+}
