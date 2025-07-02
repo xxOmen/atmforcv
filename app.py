@@ -7,7 +7,7 @@ from docx import Document
 from collections import Counter
 import google.generativeai as genai
 
-# Gemini API setup
+# Use Gemini API key from environment variable
 GEMINI_API_KEY = os.getenv("AIzaSyCcOswRE01iB9bYrxn7lEJ9lE609LR5eew")
 genai.configure(api_key=GEMINI_API_KEY)
 
@@ -92,4 +92,59 @@ def generate_docx(cv, job_keywords, job_desc):
             doc.add_paragraph(desc)
 
     if cv.get("projects"):
-        doc.add
+        doc.add_heading("Projects", level=1)
+        for proj in cv["projects"]:
+            doc.add_heading(proj.get("name", ""), level=2)
+            doc.add_paragraph(proj.get("description", ""))
+
+    if cv.get("certifications"):
+        doc.add_heading("Certifications", level=1)
+        for cert in cv["certifications"]:
+            doc.add_paragraph(cert)
+
+    if cv.get("education"):
+        doc.add_heading("Education", level=1)
+        for edu in cv["education"]:
+            deg = edu.get("degree", "")
+            inst = edu.get("institution", "")
+            dates = edu.get("dates", "")
+            cgpa = edu.get("cgpa", "")
+            edu_line = f"{deg}, {inst} ({dates})"
+            if cgpa:
+                edu_line += f", CGPA: {cgpa}"
+            doc.add_paragraph(edu_line)
+
+    temp = tempfile.NamedTemporaryFile(delete=False, suffix='.docx')
+    doc.save(temp.name)
+    return temp.name
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        # Validation
+        cv_file = request.files.get('cv_file')
+        if not cv_file or cv_file.filename == '':
+            return render_template('index.html', error="Please upload your master CV in JSON format.")
+        if not cv_file.filename.lower().endswith('.json'):
+            return render_template('index.html', error="Only .json files are accepted for your resume.")
+        try:
+            cv_data = json.load(cv_file)
+        except Exception as e:
+            return render_template('index.html', error="Invalid JSON file. Please upload a valid resume file.")
+
+        job_desc = request.form.get('job_desc', '')
+        if not job_desc or not job_desc.strip():
+            return render_template('index.html', error="Please paste the job description.")
+
+        keywords = extract_keywords(job_desc)
+        docx_path = generate_docx(cv_data, keywords, job_desc)
+        return send_file(
+            docx_path,
+            as_attachment=True,
+            download_name='ATS_CV.docx',
+            mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        )
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=5000, debug=True)
