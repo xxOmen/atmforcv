@@ -5,6 +5,11 @@ import spacy
 from flask import Flask, render_template, request, send_file
 from docx import Document
 from collections import Counter
+import google.generativeai as genai
+
+# --- Gemini API Setup ---
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or "PASTE_YOUR_GEMINI_API_KEY_HERE"
+genai.configure(api_key=GEMINI_API_KEY)
 
 app = Flask(__name__)
 nlp = spacy.load("en_core_web_sm")
@@ -38,7 +43,23 @@ def prioritize_skills(skills, keywords):
         all_skills = skills
     return sorted(set(all_skills), key=lambda s: any(k in s.lower() for k in keywords), reverse=True)
 
-def generate_docx(cv, job_keywords):
+# --- Gemini Bullet Rewriting ---
+def gemini_rewrite_bullet(bullet, job_desc):
+    prompt = f"""
+    Here is a resume bullet: "{bullet}"
+    Here is a job description: "{job_desc}"
+    Rewrite the bullet to better match the skills and keywords in the job description, while keeping it truthful and concise. Use the language from the job description where relevant.
+    """
+    try:
+        model = genai.GenerativeModel('gemini-1.5-pro')
+        response = model.generate_content(prompt)
+        text = response.text.strip()
+        return text if text else bullet
+    except Exception as e:
+        print(f"Gemini error: {e}")
+        return bullet  # fallback to original bullet
+
+def generate_docx(cv, job_keywords, job_desc):
     doc = Document()
     doc.add_heading(cv.get("name", ""), 0)
     contact = cv.get("contact", {})
@@ -50,6 +71,9 @@ def generate_docx(cv, job_keywords):
     # Professional Summary
     if "summary" in cv:
         doc.add_heading("Professional Summary", level=1)
+        # AI-rewrite summary for extra tailoring (optional)
+        # summary = gemini_rewrite_bullet(cv["summary"], job_desc)
+        # doc.add_paragraph(summary)
         doc.add_paragraph(cv["summary"])
 
     # Skills
@@ -71,7 +95,8 @@ def generate_docx(cv, job_keywords):
         desc = exp.get("description", [])
         if isinstance(desc, list):
             for bullet in desc:
-                doc.add_paragraph(bullet, style="List Bullet")
+                tailored_bullet = gemini_rewrite_bullet(bullet, job_desc)
+                doc.add_paragraph(tailored_bullet, style="List Bullet")
         else:
             doc.add_paragraph(desc)
 
@@ -108,7 +133,6 @@ def generate_docx(cv, job_keywords):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        # Get master CV JSON
         cv_file = request.files.get('cv_file')
         if not cv_file:
             return render_template('index.html', error="Please upload your master CV in JSON format.")
@@ -117,16 +141,12 @@ def index():
         except Exception as e:
             return render_template('index.html', error="Invalid JSON file.")
 
-        # Get job description
         job_desc = request.form.get('job_desc', '')
         if not job_desc.strip():
             return render_template('index.html', error="Please paste the job description.")
 
-        # Extract keywords, generate docx
         keywords = extract_keywords(job_desc)
-        docx_path = generate_docx(cv_data, keywords)
-
-        # Serve file for download, then cleanup
+        docx_path = generate_docx(cv_data, keywords, job_desc)
         return send_file(
             docx_path,
             as_attachment=True,
