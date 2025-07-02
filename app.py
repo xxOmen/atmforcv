@@ -8,7 +8,7 @@ from collections import Counter
 import google.generativeai as genai
 
 # --- Gemini API Setup ---
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or "AIzaSyCcOswRE01iB9bYrxn7lEJ9lE609LR5eew"
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or ""
 genai.configure(api_key=GEMINI_API_KEY)
 
 app = Flask(__name__)
